@@ -1,0 +1,28 @@
+defaults:
+  output_dir: output
+  image_size: 256
+  num_steps: 100
+  learning_rate: 0.03
+  content_weight: 1.0
+  style_weight: 1000000.0
+  tv_weight: 0.000001
+  save_every: 50
+  log_every: 20
+
+experiments:
+  - mode: single
+    content: images/contents/content1.jpg
+    style: images/styles/starry_night.jpg
+
+  - mode: multi_style
+    content: images/contents/content1.jpg
+    styles:
+      - images/styles/starry_night.jpg
+      - images/styles/great_wave.jpg
+    style_blend_weights:
+      - 0.6
+      - 0.4
+
+  - mode: same_content_diff_styles
+    fixed_content: images/contents/content1.jpg
+    style_dir: images/styles
