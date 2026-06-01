@@ -8,6 +8,7 @@ from .constants import SUMMARY_COLUMNS
 
 def ensure_summary_csv(summary_path):
     summary_path = Path(summary_path)
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
     if summary_path.exists():
         with open(summary_path, "r", newline="", encoding="utf-8-sig") as f:
             reader = csv.reader(f)
